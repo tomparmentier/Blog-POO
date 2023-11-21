@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <p>L'article '{{article.titre}}' a bien été créé !</p>
+    <p>Détail :</p>
+    <p>Titre : {{article.titre}}</p>
+    <p>Contenu : {{article.contenu}}</p>
+    <a class="btn btn-success" href="{{ path('app_article') }}"><p>Revenir en arrière</p></a>
+</div>
+
+{% endblock %}
