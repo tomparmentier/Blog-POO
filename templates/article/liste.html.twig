@@ -21,13 +21,12 @@
             </tr>
         </thead>
         <tbody>
-            {% for val in article %}
-                
+            {% for article in articles %}               
                 <tr>
-                    <td><a class="text-decoration-none text-dark" href="{{ path('app_article_detail', {'id': val.id}) }}">{{ val.titre }}</a></td>
-                    <td>{{ val.contenu|split(' ')|slice(0, 5)|join(' ') }}</td>
-                    <td>{{ val.dateCreation|date('Y-m-d') }}</td>
-                    <td><a class="text-decoration-none text-dark" href="{{ path('app_article_detail', {'id': val.id}) }}">...</a></td>
+                    <td><a class="text-decoration-none text-dark" href="{{ path('app_article_detail', {'id': article.id}) }}">{{ article.titre }}</a></td>
+                    <td>{{ article.contenu|split(' ')|slice(0, 5)|join(' ') }}</td>
+                    <td>{{ article.dateCreation|date('Y-m-d') }}</td>
+                    <td><a class="text-decoration-none text-dark" href="{{ path('app_article_detail', {'id': article.id}) }}">...</a></td>
                 </tr>       
             {% endfor %}
         </tbody>

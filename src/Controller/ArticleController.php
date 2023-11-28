@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -25,9 +26,10 @@ class ArticleController extends AbstractController
     {
 
         $article = new Article;
-        $article->setTitre('lala');
-        $article->setContenu('mon joli contenu');
-        $article->setDateCreation(new \DateTime('2017-03-23'));
+        $article->setTitre('article magique 3');
+        $article->setContenu('un petit contenu magique 3');
+        $article->setDateCreation(new \DateTime('2023-11-23'));
+        $article->setVotes(1);
         $entityManager->persist($article);
         $entityManager->flush();
 
@@ -44,11 +46,11 @@ class ArticleController extends AbstractController
         //
         $repository = $entityManager->getRepository(Article::class);
         //ici $repository devient un objet articleRepository
-        $article = $repository->findAll();
+        $articles = $repository->findAll();
         
 
         return $this->render('article/liste.html.twig', [
-            'article' => $article,
+            'articles' => $articles,
         ]);
 
     }
@@ -103,6 +105,15 @@ class ArticleController extends AbstractController
         ]);
     }
 
+    /*
+    //Route vers le vote
+    #[Route('/article/vote/{id}', name: 'app_article_vote', methods: "POST")]
+    public function vote(Article $article, Request $request)
+    {
+        //afficher l'article et le contenu de la requête
+        dd($article, $request->request->all());
+    }
+    */
     
 
 }
